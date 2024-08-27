@@ -39,7 +39,7 @@ export default function Home() {
   }
   return (
     <div>
-      <h1 className="text-center m-4 text-blue-900">Hello</h1>
+      <h1 className="text-center mt-4 mb-8 text-2xl font-bold">Mini-Order-Status-Tracker</h1>
       <TableComponent data={orderData}/>
     </div>
   )
