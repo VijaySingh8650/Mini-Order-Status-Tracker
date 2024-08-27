@@ -12,7 +12,8 @@ const port = process.env.PORT || 3000;
 const app = express();
 
 app.use(cors({
-    origin: ["http://localhost:3000", "https://mini-order-status-tracker.vercel.app/"],    
+    origin: ["http://localhost:3000", "https://mini-order-status-tracker.vercel.app"], 
+    methods: ["GET", "POST", "PUT", "DELETE"],   
 }));
 
 app.use(express.json()); //to parse the request body
