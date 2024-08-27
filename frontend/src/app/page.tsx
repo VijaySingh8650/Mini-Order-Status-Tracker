@@ -27,7 +27,7 @@ export default function Home() {
     setLoader(true);
   
     
-    fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL as string}/orders${orderStatus ? "?status="+orderStatus :""}`).then((res)=>res.json())
+    fetch(`https://mini-order-status-tracker-api.onrender.com/orders${orderStatus ? "?status="+orderStatus :""}`).then((res)=>res.json())
     .then((res)=>{
       if(res?.data && Array.isArray(res.data)){
   
