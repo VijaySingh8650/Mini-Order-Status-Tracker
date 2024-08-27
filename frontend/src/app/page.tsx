@@ -11,6 +11,7 @@ export default function Home() {
   const [error, setError] = useState<boolean>(false);
   const [orderData, setOrderData] = useState<TypeResponseOfOrders[]>([]);
   const [status, setStatus] = useState<string>("");
+  const [noData, setNoData] = useState<boolean>(false);
 
 
 
@@ -29,24 +30,31 @@ export default function Home() {
     fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL as string}/orders${orderStatus ? "?status="+orderStatus :""}`).then((res)=>res.json())
     .then((res)=>{
       if(res?.data && Array.isArray(res.data)){
-        console.log(res.data, "sgufdud")
+  
         setOrderData(res.data);
         setLoader(false);
+
+        res?.data?.length === 0 ? setNoData(true) : setNoData(false);
+
       }
     })
     .catch((err)=>{
 
        setError(true);
        setLoader(false);
+       setNoData(false);
        console.error(err);
      
     })
   }
 
   const handleValueChange = (value:string) =>{
+    setNoData(false);
     setOrderData([]);
     setStatus(value);
   }
+
+
 
 
   return (
@@ -55,9 +63,10 @@ export default function Home() {
       
       <div className="flex justify-center w-full">
         <div>
-          <div className="mb-4 flex justify-end">
-
-            <SelectBox handleValueChange={handleValueChange}/>
+          <div className="mb-4 gap-4 flex items-center justify-end">
+            
+           {status && <button className="border-2 rounded-md border-black pt-2 pb-2 pl-4 pr-4" onClick={()=>handleValueChange("")}>Reset</button>}
+            <SelectBox value={status} handleValueChange={handleValueChange}/>
 
           </div>
 
@@ -65,6 +74,12 @@ export default function Home() {
 
          {
           loader && <p className="text-center text-xl mt-2">Loading...</p>
+         }
+         {
+           noData && <p className="text-center text-xl mt-2">{"Nothing Found :("}</p>
+         }
+         {
+            error && <p className="text-center text-xl mt-2">Something went wrong!</p>
          }
 
         </div>

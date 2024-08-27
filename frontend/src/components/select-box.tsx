@@ -9,12 +9,13 @@ import {
 
 type TypePageProps = {
     handleValueChange : (value:string) => void;
+    value: string;
 }
-export default function SelectBox({handleValueChange}:TypePageProps) {
+export default function SelectBox({handleValueChange, value}:TypePageProps) {
 
     
   return (
-    <Select onValueChange={handleValueChange}>
+    <Select value={value} onValueChange={handleValueChange}>
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Select Order Status" />
       </SelectTrigger>

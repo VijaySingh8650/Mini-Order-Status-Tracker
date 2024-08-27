@@ -11,7 +11,7 @@ type TypePageProps = {
 
 const TableComponent: React.FC<TypePageProps> = ({ data }) => {
 
- console.log(data);
+
 
   return (
     
