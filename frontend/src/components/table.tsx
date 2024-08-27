@@ -1,5 +1,6 @@
 "use client";
 
+import { convertDate } from "@/common-functions/function";
 import { TypeResponseOfOrders } from "@/types/type";
 import React from "react";
 
@@ -36,7 +37,7 @@ const TableComponent: React.FC<TypePageProps> = ({ data }) => {
                   <td className="p-2">{item.orderId}</td>
                   <td className="p-2">{item.customerName}</td>
                   <td className="p-2">{item.status}</td>
-                  {/* <td>{item.createdAt}</td> */}
+                  <td>{convertDate(item.createdAt)}</td>
                  </tr>
           })
         }
