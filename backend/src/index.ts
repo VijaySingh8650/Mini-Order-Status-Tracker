@@ -13,7 +13,8 @@ const app = express();
 
 app.use(cors({
     origin: ["http://localhost:3000", "https://mini-order-status-tracker.vercel.app"], 
-    methods: ["GET", "POST", "PUT", "DELETE"],   
+    methods: ["GET", "POST", "PUT", "DELETE"],  
+    successStatus: 200, 
 }));
 
 app.use(express.json()); //to parse the request body
