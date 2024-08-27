@@ -14,7 +14,7 @@ const TableComponent: React.FC<TypePageProps> = ({ data }) => {
  console.log(data);
 
   return (
-    <div className="flex justify-center w-full">
+    
 
      <table>
       <thead className= "bg-black text-white">
@@ -42,8 +42,6 @@ const TableComponent: React.FC<TypePageProps> = ({ data }) => {
         }
       </tbody>
      </table>
-
-    </div>
   );
 };
 
