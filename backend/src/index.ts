@@ -2,13 +2,18 @@ import express, {  Request ,Response } from "express";
 import dotenv from "dotenv";
 import AppRouter from "./router";
 import { ErrorHandler, InvalidAPI } from "./global-error";
-
+import cors from "cors";
 
 dotenv.config();
 
 const port = process.env.PORT || 3000;
 
+
 const app = express();
+
+app.use(cors({
+    origin: ["http://localhost:3000", "https://mini-order-status-tracker.vercel.app/"],    
+}));
 
 app.use(express.json()); //to parse the request body
 
