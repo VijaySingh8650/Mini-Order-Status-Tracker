@@ -1,8 +1,8 @@
 "use client";
+import React, { useEffect, useState } from "react";
 
+import TableComponent from "@/components/table";
 import { TypeResponseOfOrders } from "@/types/type";
-import Image from "next/image";
-import { useEffect, useState } from "react";
 
 export default function Home() {
 
@@ -19,11 +19,12 @@ export default function Home() {
 
     setLoader(true);
     
-    let url:string = `${process.env.NEXT_PUBLIC_BASE_URL}/orders`;
+    let url:string = `${process.env.NEXT_PUBLIC_API_BASE_URL as string}/orders`;
     
-    fetch(url).then((res)=>res.json())
+    fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL as string}/orders`).then((res)=>res.json())
     .then((res)=>{
       if(res?.data && Array.isArray(res.data)){
+        console.log(res.data, "sgufdud")
         setOrderData(res.data);
         setLoader(false);
       }
@@ -38,7 +39,8 @@ export default function Home() {
   }
   return (
     <div>
-      
+      <h1 className="text-center m-4 text-blue-900">Hello</h1>
+      <TableComponent data={orderData}/>
     </div>
   )
 }
